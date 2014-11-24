@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A882E692-7342-468B-830C-26F88C1A5E3E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CallPlanner.Core</RootNamespace>
+    <AssemblyName>CallPlanner.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\CallPlanner.Console\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Agent.cs" />
+    <Compile Include="Assigners\OtherGroupAssigner.cs" />
+    <Compile Include="Assigners\EvenGroupAssigner.cs" />
+    <Compile Include="Assigners\AssignerBase.cs" />
+    <Compile Include="Assigners\OddGroupAssigner.cs" />
+    <Compile Include="AssignmentManager.cs" />
+    <Compile Include="Attributes\AssignerAttribute.cs" />
+    <Compile Include="AppStart.cs" />
+    <Compile Include="CallPlanner.cs" />
+    <Compile Include="Configuration\AssignerCollection.cs" />
+    <Compile Include="Configuration\AssignerConfigElement.cs" />
+    <Compile Include="Configuration\AssignerSection.cs" />
+    <Compile Include="ConsolePrinter.cs" />
+    <Compile Include="Entities\AgentGroup.cs" />
+    <Compile Include="Entities\CpEnumerators.cs" />
+    <Compile Include="Entities\GroupTypeEnumerator.cs" />
+    <Compile Include="Entities\Interaction.cs" />
+    <Compile Include="Entities\Originator.cs" />
+    <Compile Include="Entities\OriginatorResponse.cs" />
+    <Compile Include="Entities\ResponseTypeEnumerator.cs" />
+    <Compile Include="Exceptions\InvalidInteractionException.cs" />
+    <Compile Include="AssignerContainer.cs" />
+    <Compile Include="Helpers\AssignmentHelper.cs" />
+    <Compile Include="Interfaces\IAgentGroupRepository.cs" />
+    <Compile Include="Interfaces\IAssignerManager.cs" />
+    <Compile Include="Interfaces\IAssignmentHelper.cs" />
+    <Compile Include="Interfaces\IOriginatorDataProvider.cs" />
+    <Compile Include="Interfaces\IOriginatorService.cs" />
+    <Compile Include="Interfaces\IPrinter.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IValidatorFactory.cs" />
+    <Compile Include="IOC\AgentGroupRepositoryInstaller.cs" />
+    <Compile Include="IOC\AssignmentHelperInstaller.cs" />
+    <Compile Include="IOC\AssignmentManagerInstaller.cs" />
+    <Compile Include="IOC\DependencyInstaller.cs" />
+    <Compile Include="IOC\OriginatorDataProviderInstaller.cs" />
+    <Compile Include="IOC\AssignerContainerInstaller.cs" />
+    <Compile Include="IOC\PrinterInstaller.cs" />
+    <Compile Include="IOC\RepositoryInstaller.cs" />
+    <Compile Include="IOC\ValidatorFactoryInstaller.cs" />
+    <Compile Include="OriginatorDataProvider.cs" />
+    <Compile Include="OriginatorService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\InMemoryAgentGroupRepository.cs" />
+    <Compile Include="Validator\EmailValidator.cs" />
+    <Compile Include="Repositories\InmemoryRepository.cs" />
+    <Compile Include="Validator\InteractionValidator.cs" />
+    <Compile Include="Validator\PhoneNumberValidator.cs" />
+    <Compile Include="Factories\ValidatorFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
